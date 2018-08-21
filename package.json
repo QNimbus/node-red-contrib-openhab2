@@ -9,18 +9,19 @@
   },
   "author": "Peter De Mangelaere <peter.demangelaere@gmail.com>",
   "keywords": [
-    "node-red", "openhab2"
+    "node-red",
+    "openhab2"
   ],
   "node-red": {
     "nodes": {
       "openhab2": "openhab2.js"
     }
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pdmangel/node-red-contrib-openhab2.git"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {}
 }
