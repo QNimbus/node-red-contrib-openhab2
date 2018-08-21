@@ -13,7 +13,7 @@
   ],
   "node-red": {
     "nodes": {
-      "openhab2": "77-openhab2.js"
+      "openhab2": "openhab2.js"
     }
   },
   "scripts": {
