@@ -70,7 +70,7 @@
 <script type='text/javascript'>
     RED.nodes.registerType('openhab2-events', {
         category: 'home automation',
-        color: '#0fdd0f',
+        color: '#f3b567',
         defaults: {
             name: {
                 value: ''
@@ -88,13 +88,9 @@
         inputs: 0,
         outputs: 1,
         icon: 'node-red-contrib-openhab2.png',
-        paletteLabel: 'openhab2-events',
+        paletteLabel: 'events',
         label: function() {
-
-            return (this.name || this.itemname || 'openhab2 events');
-        },
-        oneditprepare: function() {
-            //openhabEditPrepare(this, true);
+            return (this.name || this.itemname || 'events');
         }
     });
 </script>
