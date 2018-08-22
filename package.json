@@ -18,7 +18,16 @@
         }
     },
     "scripts": {
-        "debug": "nodemon -w . -e html,js  --exec 'node-red --port 3030 -v -u . ./test_flow.json'"
+        "debug": "nodemon"
+    },
+    "nodemonConfig": {
+        "signal": "SIGHUP",
+        "env": {
+            "NODE_ENV": "development"
+        },
+        "watch": ".",
+        "ext": "html,js",
+        "exec": "node-red --port 3030 -v -u . ./test_flow.json"
     },
     "repository": {
         "type": "git",
