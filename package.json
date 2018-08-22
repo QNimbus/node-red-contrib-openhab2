@@ -18,7 +18,7 @@
         }
     },
     "scripts": {
-        "debug": "nodemon -w openhab -e html,js  --exec 'node-red --port 3030 -v -u . ./test_flow.json'"
+        "debug": "nodemon -w . -e html,js  --exec 'node-red --port 3030 -v -u . ./test_flow.json'"
     },
     "repository": {
         "type": "git",
