@@ -1,5 +1,5 @@
 {
-    "name": "node-red-contrib-openhab2.3",
+    "name": "node-red-contrib-openhab2new",
     "version": "0.0.1",
     "description": "OpenHAB nodes for node-red",
     "dependencies": {
@@ -14,7 +14,7 @@
     ],
     "node-red": {
         "nodes": {
-            "openhab2": "openhab2.js"
+            "openhab2-new": "openhab2-new.js"
         }
     },
     "scripts": {

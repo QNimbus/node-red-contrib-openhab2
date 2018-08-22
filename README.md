@@ -1,4 +1,4 @@
-# node-red-contrib-openhab2
+# node-red-contrib-openhab2-new
 ## Description
 
 Nodes facilitating the automation of *openHAB* ( <http://www.openhab.org> ) items with Node-RED ( <http://nodered.org> ).
@@ -7,7 +7,7 @@ Nodes facilitating the automation of *openHAB* ( <http://www.openhab.org> ) item
 
 ```
 $ cd ~/.node-red
-$ npm install node-red-contrib-openhab2
+$ npm install node-red-contrib-openhab2-new
 ```
 
 ## Nodes

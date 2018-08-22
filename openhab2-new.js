@@ -20,42 +20,6 @@
 var EventSource = require('@joeybaker/eventsource');
 var request = require('request');
 
-function getConnectionString(config) {
-    var url;
-
-    if (config.protocol)
-        url = config.protocol;
-    else
-        url = 'http';
-
-    url += '://';
-
-    if ((config.username != undefined) && (config.username.trim().length != 0)) {
-        url += config.username.trim();
-
-        if ((config.password != undefined) && (config.password.length != 0)) {
-            url += ':' + config.password;
-        }
-        url += '@';
-    }
-    url += config.host;
-
-    if ((config.port != undefined) && (config.port.trim().length != 0)) {
-        url += ':' + config.port.trim();
-    }
-
-    if ((config.path != undefined) && (config.path.trim().length != 0)) {
-        var path = config.path.trim();
-
-        path = path.replace(/^[\/]+/, '');
-        path = path.replace(/[\/]+$/, '');
-
-        url += '/' + path;
-    }
-
-    return url;
-}
-
 module.exports = function(RED) {
 
     /**
@@ -73,28 +37,7 @@ module.exports = function(RED) {
     });
 
     /**
-     * httpAdmin.get
-     * 
-     * Enable http route GET all available OpenHAB items
-     *
-     */
-    RED.httpNode.get('/openhab2/items', function(req, res, next) {
-        var config = req.query;
-        var url = getConnectionString(config) + '/rest/items';
-        request.get(url, function(error, response, body) {
-            if (error) {
-                res.send('request error \'' + JSON.stringify(error) + '\' on \'' + url + '\'');
-            } else if (response.statusCode != 200) {
-                res.send('response error \'' + JSON.stringify(response) + '\' on \'' + url + '\'');
-            } else {
-                res.send(body);
-            }
-        });
-
-    });
-
-    /**
-     * openhab2-controller
+     * openhab2-new-controller
      * 
      * Holds the configuration (hostname, port, creds, etc) of the OpenHAB server
      *
@@ -149,12 +92,11 @@ module.exports = function(RED) {
             node.log('close');
             node.emit('status', 'Disconnected');
         });
-
     }
-    RED.nodes.registerType('openhab2-controller', OpenHABControllerNode);
+    RED.nodes.registerType('openhab2-new-controller', OpenHABControllerNode);
 
     /**
-     * ====== openhab2-events ===================
+     * ====== openhab2-new-events ===================
      * monitors opnHAB events
      * =======================================
      */
@@ -162,16 +104,14 @@ module.exports = function(RED) {
         // Create OpenHABEvents node
         RED.nodes.createNode(this, config);
 
-        var openhabController = RED.nodes.getNode(config.controller);
+        var openHABController = RED.nodes.getNode(config.controller);
         var node = this;
 
         node.name = config.name;
 
-        OpenHABController.on('status', function(args) {
+        openHABController.on('status', function(args) {
             node.status({ fill: "green", shape: "dot", text: "state:" + JSON.stringify(args) });
         });
-
-        //
-        RED.nodes.registerType('openhab2-events', OpenHABEvents);
     }
+    RED.nodes.registerType('openhab2-new-events', OpenHABEvents);
 }
